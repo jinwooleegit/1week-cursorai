@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오 웹사이트 예제 - 1시간 안에 Cursor를 이용해서 홈페이지 만들기</title>
+    <meta name="description" content="Cursor AI로 만든 포트폴리오 웹사이트 예제">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="images/cursor-logo.svg" alt="Cursor 로고"><span>Cursor로 홈페이지 만들기</span></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#intro">소개</a></li>
+                    <li><a href="index.html#features">특징</a></li>
+                    <li><a href="guide.html">가이드</a></li>
+                    <li><a href="index.html#examples">예제</a></li>
+                    <li><a href="index.html#resources">리소스</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="메뉴 열기">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="portfolio-page">
+        <div class="container">
+            <h1 class="page-title">포트폴리오 웹사이트 예제</h1>
+            
+            <section class="portfolio-section">
+                <h2>프로젝트 개요</h2>
+                <div class="portfolio-content">
+                    <p>이 예제는 Cursor AI를 활용하여 만든 포트폴리오 웹사이트입니다. 반응형 디자인과 모던한 UI/UX를 구현했습니다.</p>
+                    
+                    <h3>주요 기능</h3>
+                    <ul>
+                        <li>반응형 그리드 레이아웃</li>
+                        <li>프로젝트 필터링 시스템</li>
+                        <li>이미지 갤러리</li>
+                        <li>연락처 폼</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="portfolio-section">
+                <h2>코드 예시</h2>
+                <div class="portfolio-content">
+                    <h3>HTML 구조</h3>
+                    <pre><code>&lt;section class="portfolio"&gt;
+    &lt;div class="portfolio-filters"&gt;
+        &lt;button class="filter-btn active" data-filter="all"&gt;전체&lt;/button&gt;
+        &lt;button class="filter-btn" data-filter="web"&gt;웹&lt;/button&gt;
+        &lt;button class="filter-btn" data-filter="app"&gt;앱&lt;/button&gt;
+        &lt;button class="filter-btn" data-filter="design"&gt;디자인&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="portfolio-grid"&gt;
+        &lt;div class="portfolio-item" data-category="web"&gt;
+            &lt;img src="project1.jpg" alt="프로젝트 1"&gt;
+            &lt;div class="portfolio-overlay"&gt;
+                &lt;h3&gt;프로젝트 제목&lt;/h3&gt;
+                &lt;p&gt;프로젝트 설명&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        // ... 더 많은 프로젝트 아이템
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+                    <h3>CSS 스타일</h3>
+                    <pre><code>.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    transform: translateY(0);
+}</code></pre>
+
+                    <h3>JavaScript 기능</h3>
+                    <pre><code>// 필터링 기능
+const filterButtons = document.querySelectorAll('.filter-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        portfolioItems.forEach(item => {
+            if (filter === 'all' || item.dataset.category === filter) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});</code></pre>
+                </div>
+            </section>
+
+            <section class="portfolio-section">
+                <h2>실행 방법</h2>
+                <div class="portfolio-content">
+                    <ol>
+                        <li>Cursor IDE에서 새 프로젝트 생성</li>
+                        <li>AI에게 "필터링 시스템이 있는 포트폴리오 웹사이트 만들기" 명령어 입력</li>
+                        <li>생성된 코드 검토 및 수정</li>
+                        <li>이미지 및 콘텐츠 추가</li>
+                        <li>반응형 디자인 테스트</li>
+                    </ol>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/cursor-logo.svg" alt="Cursor 로고">
+                    <p>Cursor로 홈페이지 만들기</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h4>탐색</h4>
+                        <ul>
+                            <li><a href="index.html#intro">소개</a></li>
+                            <li><a href="index.html#features">특징</a></li>
+                            <li><a href="guide.html">가이드</a></li>
+                            <li><a href="index.html#examples">예제</a></li>
+                            <li><a href="index.html#resources">리소스</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>외부 링크</h4>
+                        <ul>
+                            <li><a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">Cursor 공식 사이트</a></li>
+                            <li><a href="https://github.com/getcursor/cursor" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                            <li><a href="https://discord.gg/cursor" target="_blank" rel="noopener noreferrer">Discord</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 1시간 안에 Cursor를 이용해서 홈페이지 만들기. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

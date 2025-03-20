@@ -1,0 +1,13 @@
+이 폴더에는 다음과 같은 이미지 파일들이 필요합니다:
+
+1. hero-image.png - Cursor IDE를 사용하여 코딩하는 모습을 보여주는 이미지
+2. example1.jpg - 포트폴리오 웹사이트 예제 이미지
+3. example2.jpg - 랜딩 페이지 예제 이미지
+4. example3.jpg - 블로그 웹사이트 예제 이미지
+
+실제 웹사이트 구현 시에는 이 파일들을 적절한 이미지로 대체해주세요.
+또는 다음과 같은 무료 이미지 사이트에서 적절한 이미지를 찾아 사용할 수 있습니다:
+
+- Unsplash: https://unsplash.com
+- Pexels: https://pexels.com
+- Pixabay: https://pixabay.com 

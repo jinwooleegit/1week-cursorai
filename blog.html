@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>블로그 웹사이트 예제 - 1시간 안에 Cursor를 이용해서 홈페이지 만들기</title>
+    <meta name="description" content="Cursor AI로 만든 블로그 웹사이트 예제">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="images/cursor-logo.svg" alt="Cursor 로고"><span>Cursor로 홈페이지 만들기</span></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#intro">소개</a></li>
+                    <li><a href="index.html#features">특징</a></li>
+                    <li><a href="guide.html">가이드</a></li>
+                    <li><a href="index.html#examples">예제</a></li>
+                    <li><a href="index.html#resources">리소스</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="메뉴 열기">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="blog-page">
+        <div class="container">
+            <h1 class="page-title">블로그 웹사이트 예제</h1>
+            
+            <section class="blog-section">
+                <h2>프로젝트 개요</h2>
+                <div class="blog-content">
+                    <p>이 예제는 Cursor AI를 활용하여 만든 블로그 웹사이트입니다. 콘텐츠 관리와 사용자 경험에 중점을 두었습니다.</p>
+                    
+                    <h3>주요 기능</h3>
+                    <ul>
+                        <li>반응형 그리드 레이아웃</li>
+                        <li>카테고리 기반 필터링</li>
+                        <li>검색 기능</li>
+                        <li>댓글 시스템</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="blog-section">
+                <h2>코드 예시</h2>
+                <div class="blog-content">
+                    <h3>HTML 구조</h3>
+                    <pre><code>&lt;div class="blog-grid"&gt;
+    &lt;article class="blog-card"&gt;
+        &lt;div class="blog-image"&gt;
+            &lt;img src="blog-image.jpg" alt="블로그 이미지"&gt;
+        &lt;/div&gt;
+        &lt;div class="blog-content"&gt;
+            &lt;div class="blog-meta"&gt;
+                &lt;span class="category"&gt;개발&lt;/span&gt;
+                &lt;span class="date"&gt;2023-12-01&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;h3&gt;블로그 제목&lt;/h3&gt;
+            &lt;p&gt;블로그 내용 요약...&lt;/p&gt;
+            &lt;a href="#" class="read-more"&gt;더 읽기&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+
+                    <h3>CSS 스타일</h3>
+                    <pre><code>.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.blog-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-content {
+    padding: 20px;
+}
+
+.blog-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}</code></pre>
+
+                    <h3>JavaScript 기능</h3>
+                    <pre><code>// 카테고리 필터링
+const filterPosts = (category) => {
+    const posts = document.querySelectorAll('.blog-card');
+    
+    posts.forEach(post => {
+        const postCategory = post.querySelector('.category').textContent;
+        if (category === 'all' || postCategory === category) {
+            post.style.display = 'block';
+        } else {
+            post.style.display = 'none';
+        }
+    });
+};
+
+// 검색 기능
+const searchPosts = (query) => {
+    const posts = document.querySelectorAll('.blog-card');
+    
+    posts.forEach(post => {
+        const title = post.querySelector('h3').textContent.toLowerCase();
+        const content = post.querySelector('p').textContent.toLowerCase();
+        
+        if (title.includes(query) || content.includes(query)) {
+            post.style.display = 'block';
+        } else {
+            post.style.display = 'none';
+        }
+    });
+};</code></pre>
+                </div>
+            </section>
+
+            <section class="blog-section">
+                <h2>실행 방법</h2>
+                <div class="blog-content">
+                    <ol>
+                        <li>Cursor IDE에서 새 프로젝트 생성</li>
+                        <li>AI에게 "그리드 레이아웃이 있는 현대적인 블로그 웹사이트 만들기" 명령어 입력</li>
+                        <li>생성된 코드 검토 및 수정</li>
+                        <li>블로그 포스트 콘텐츠 추가</li>
+                        <li>필터링 및 검색 기능 구현</li>
+                    </ol>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/cursor-logo.svg" alt="Cursor 로고">
+                    <p>Cursor로 홈페이지 만들기</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h4>탐색</h4>
+                        <ul>
+                            <li><a href="index.html#intro">소개</a></li>
+                            <li><a href="index.html#features">특징</a></li>
+                            <li><a href="guide.html">가이드</a></li>
+                            <li><a href="index.html#examples">예제</a></li>
+                            <li><a href="index.html#resources">리소스</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>외부 링크</h4>
+                        <ul>
+                            <li><a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">Cursor 공식 사이트</a></li>
+                            <li><a href="https://github.com/getcursor/cursor" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                            <li><a href="https://discord.gg/cursor" target="_blank" rel="noopener noreferrer">Discord</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 1시간 안에 Cursor를 이용해서 홈페이지 만들기. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
